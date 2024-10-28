@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '3.1.0'
+    id 'io.spring.dependency-management' version '1.1.0'
 }
 
 group = 'org.realtimemapservice'
@@ -10,8 +12,19 @@ repositories {
 }
 
 dependencies {
+    // Spring Boot и Spring Kafka
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // Kafka Client (Spring подтянет совместимую версию автоматически)
+    implementation 'org.apache.kafka:kafka-clients'
+
+    // JUnit для тестирования
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {
